@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  /* Brand palette extracted from the updated Skillea moodboard */
+  --skillea-deep-navy: #081739;
+  --skillea-navy: #10305f;
+  --skillea-mid-blue: #2f6bdd;
+  --skillea-light-blue: #88c1ff;
+  --skillea-soft-blue: #c4dcff;
+  --skillea-soft-pink: #ffa2cc;
+  --skillea-soft-peach: #ffe2bb;
+  --skillea-star-yellow: #ffe48c;
+  --skillea-ice: #f5f7ff;
+  --skillea-cloud: #eef2ff;
+
+  /* Shared gradients so the palette tweak propagates everywhere */
+  --skillea-hero-gradient: linear-gradient(135deg, var(--skillea-deep-navy) 0%, var(--skillea-mid-blue) 55%, var(--skillea-light-blue) 100%);
+  --skillea-cta-gradient: linear-gradient(90deg, rgba(255, 162, 204, 0.95) 0%, rgba(255, 226, 187, 0.95) 55%, rgba(255, 228, 140, 0.9) 100%);
+}
