@@ -22,8 +22,8 @@ const services = [
     description:
       'Descubre tu camino profesional ideal con evaluaciones especializadas y asesoría experta.',
     icon: TrendingUp,
-    accentWrapper: 'bg-[var(--skillea-light-blue)] text-[var(--skillea-navy)]',
-    bulletAccent: 'text-[var(--skillea-light-blue)]'
+    accentWrapper: 'bg-[var(--skillea-soft-peach)] text-[var(--skillea-navy)]',
+    bulletAccent: 'text-[var(--skillea-soft-peach)]'
   }
 ];
 
@@ -104,7 +104,10 @@ function App() {
 
       <section className="pt-32 pb-24 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="relative overflow-hidden rounded-[32px] bg-gradient-to-br from-[var(--skillea-navy)] via-[var(--skillea-mid-blue)] to-[var(--skillea-light-blue)] text-white">
+          <div
+            className="relative overflow-hidden rounded-[32px] text-white"
+            style={{ backgroundImage: 'var(--skillea-hero-gradient)', backgroundColor: 'var(--skillea-deep-navy)' }}
+          >
             <div className="absolute -right-24 -top-20 w-72 h-72 bg-[var(--skillea-soft-pink)]/40 blur-3xl rounded-full" aria-hidden="true" />
             <div className="absolute -left-20 bottom-0 w-64 h-64 bg-[var(--skillea-star-yellow)]/30 blur-3xl rounded-full" aria-hidden="true" />
             <div className="relative grid lg:grid-cols-[1.2fr,1fr] gap-16 p-10 md:p-16 items-center">
@@ -121,7 +124,7 @@ function App() {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button className="group relative inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-[var(--skillea-navy)] font-semibold shadow-xl transition-transform focus:outline-none focus:ring-2 focus:ring-white/40">
-                    <span className="absolute inset-0 rounded-full bg-gradient-to-r from-[var(--skillea-star-yellow)] via-[#ffe9a0] to-[var(--skillea-soft-pink)] opacity-90 group-hover:opacity-100 group-hover:scale-[1.02] transition-all" />
+                    <span className="absolute inset-0 rounded-full bg-gradient-to-r from-[var(--skillea-star-yellow)] via-[var(--skillea-soft-peach)] to-[var(--skillea-soft-pink)] opacity-90 group-hover:opacity-100 group-hover:scale-[1.02] transition-all" />
                     <span className="relative flex items-center gap-2">
                       Agenda tu sesión gratuita
                       <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
@@ -239,7 +242,11 @@ function App() {
         </div>
       </section>
 
-      <section id="metodologia" className="py-24 px-6 bg-white">
+      <section
+        id="metodologia"
+        className="py-24 px-6"
+        style={{ backgroundColor: 'var(--skillea-cloud)' }}
+      >
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="inline-flex items-center gap-2 rounded-full bg-[var(--skillea-ice)] px-4 py-2 text-sm font-semibold text-[var(--skillea-navy)]">
@@ -306,7 +313,10 @@ function App() {
       </section>
 
       <section className="py-24 px-6">
-        <div className="max-w-5xl mx-auto overflow-hidden rounded-[32px] bg-gradient-to-r from-[var(--skillea-soft-pink)] via-[#ffd1dc] to-[var(--skillea-star-yellow)] text-[var(--skillea-navy)] shadow-[0_45px_80px_-50px_rgba(16,45,107,0.5)]">
+        <div
+          className="max-w-5xl mx-auto overflow-hidden rounded-[32px] text-[var(--skillea-navy)] shadow-[0_45px_80px_-50px_rgba(16,45,107,0.5)]"
+          style={{ backgroundImage: 'var(--skillea-cta-gradient)', backgroundColor: 'var(--skillea-soft-pink)' }}
+        >
           <div className="px-10 py-16 md:px-20 md:py-20 text-center">
             <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-6">¿Listo para transformar tu carrera?</h2>
             <p className="text-lg md:text-xl text-[var(--skillea-navy)]/80 max-w-3xl mx-auto mb-10">
