@@ -114,6 +114,12 @@ function App() {
             </a>
             <div className="hidden md:flex items-center gap-8">
               <a
+                href="#nosotros"
+                className="text-[var(--skillea-navy)]/70 hover:text-[var(--skillea-navy)] transition-colors"
+              >
+                Nosotros
+              </a>
+              <a
                 href="#servicios"
                 className="text-[var(--skillea-navy)]/70 hover:text-[var(--skillea-navy)] transition-colors"
               >
@@ -274,6 +280,90 @@ function App() {
                       </p>
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* NOSOTROS */}
+      <section id="nosotros" className="py-24 px-6 bg-white">
+        <div className="max-w-7xl mx-auto grid gap-16 lg:grid-cols-[1.1fr,0.9fr] items-center">
+          <div>
+            <span className="inline-flex items-center gap-2 rounded-full bg-[var(--skillea-soft-peach)]/60 px-4 py-2 text-sm font-semibold text-[var(--skillea-navy)]">
+              <span className="inline-block h-2 w-2 rounded-full bg-[var(--skillea-star-yellow)]" /> Nosotros
+            </span>
+            <h2 className="mt-6 text-4xl md:text-5xl font-bold text-[var(--skillea-navy)]">
+              Acompañamos a profesionales y equipos hacia su próxima etapa
+            </h2>
+            <p className="mt-6 text-lg text-[var(--skillea-navy)]/70 leading-relaxed">
+              Somos un colectivo de coaches, consultores y especialistas en talento
+              que combina metodologías ágiles, psicología organizacional y data para
+              impulsar decisiones profesionales con confianza. Diseñamos programas
+              que conectan propósito, estrategia y ejecución en cada acompañamiento.
+            </p>
+            <div className="mt-10 grid gap-6 sm:grid-cols-2">
+              {[{
+                title: "Misión",
+                description:
+                  "Empoderar a cada profesional para diseñar un camino laboral sostenible, alineado con sus talentos y valores.",
+              },
+              {
+                title: "Visión",
+                description:
+                  "Ser la referencia en América Latina en coaching profesional basado en evidencia y acompañamiento humano.",
+              }].map((item) => (
+                <div
+                  key={item.title}
+                  className="rounded-3xl border border-[var(--skillea-soft-blue)]/40 bg-[var(--skillea-cloud)] p-6"
+                >
+                  <h3 className="text-xl font-semibold text-[var(--skillea-navy)] mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm text-[var(--skillea-navy)]/70 leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="relative">
+            <div className="absolute -top-10 -right-14 h-48 w-48 rounded-full bg-[var(--skillea-soft-blue)]/40 blur-3xl" aria-hidden="true" />
+            <div className="relative overflow-hidden rounded-[28px] bg-white shadow-[0_35px_60px_-40px_rgba(16,45,107,0.35)] border border-[var(--skillea-soft-blue)]/30">
+              <div className="px-10 py-12 space-y-6">
+                <div>
+                  <h3 className="text-2xl font-bold text-[var(--skillea-navy)]">Nuestro equipo</h3>
+                  <p className="mt-3 text-sm text-[var(--skillea-navy)]/70 leading-relaxed">
+                    Facilitadores certificados en coaching ejecutivo, desarrollo de habilidades digitales
+                    y diseño de carrera acompañan cada proceso con cercanía y métricas claras.
+                  </p>
+                </div>
+                <div className="grid gap-4">
+                  {[{
+                    name: "Valeria Campos",
+                    role: "Coach Ejecutiva ICF",
+                    focus: "Especialista en liderazgo consciente y transición de carrera."},
+                  {
+                    name: "Hernán López",
+                    role: "Consultor en Talento",
+                    focus: "Diseña estrategias de empleabilidad basadas en data y storytelling."},
+                  {
+                    name: "Lucía Martínez",
+                    role: "Facilitadora de Habilidades",
+                    focus: "Guía programas de upskilling en comunicación y colaboración remota."}
+                  ].map((member) => (
+                    <div key={member.name} className="flex gap-4 items-start">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[var(--skillea-soft-pink)] to-[var(--skillea-light-blue)] text-[var(--skillea-navy)] font-semibold">
+                        {member.name.charAt(0)}
+                      </div>
+                      <div>
+                        <p className="font-semibold text-[var(--skillea-navy)]">{member.name}</p>
+                        <p className="text-sm text-[var(--skillea-navy)]/70">{member.role}</p>
+                        <p className="mt-1 text-sm text-[var(--skillea-navy)]/60 leading-relaxed">{member.focus}</p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -511,8 +601,8 @@ function App() {
               <h4 className="font-semibold text-lg mb-4">Empresa</h4>
               <ul className="space-y-2 text-sm text-[var(--skillea-ice)]/80">
                 <li>
-                  <a href="#metodologia" className="hover:text-white transition-colors">
-                    Sobre Nosotros
+                  <a href="#nosotros" className="hover:text-white transition-colors">
+                    Nosotros
                   </a>
                 </li>
                 <li>
