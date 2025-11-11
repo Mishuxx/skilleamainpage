@@ -265,24 +265,26 @@ function App() {
                     cada proceso con cercanía y métricas claras.
                   </p>
                 </div>
-                <div className="grid gap-4">
-                  {[
-                    { name: "Valeria Campos", role: "Coach Ejecutiva ICF", focus: "Especialista en liderazgo consciente y transición de carrera." },
-                    { name: "Hernán López", role: "Consultor en Talento", focus: "Diseña estrategias de empleabilidad basadas en data y storytelling." },
-                    { name: "Lucía Martínez", role: "Facilitadora de Habilidades", focus: "Guía programas de upskilling en comunicación y colaboración remota." },
-                  ].map((m) => (
-                    <div key={m.name} className="flex gap-4 items-start">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[var(--skillea-soft-pink)] to-[var(--skillea-light-blue)] text-[var(--skillea-navy)] font-semibold">
-                        {m.name.charAt(0)}
-                      </div>
-                      <div>
-                        <p className="font-semibold text-[var(--skillea-navy)]">{m.name}</p>
-                        <p className="text-sm text-[var(--skillea-navy)]/70">{m.role}</p>
-                        <p className="mt-1 text-sm text-[var(--skillea-navy)]/60 leading-relaxed">{m.focus}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+               {/* Nuestro equipo */}
+<div className="grid gap-4">
+  {[
+    { name: "Daniela Medina", role: "Coach de Transformación", focus: "Acompaña procesos de cambio cultural y liderazgo femenino." },
+    { name: "Gustavo Mujica", role: "Mentor de Carrera", focus: "Especialista en planes de transición hacia roles directivos." },
+    { name: "Ricardo Pulgar", role: "Consultor en Innovación", focus: "Integra metodologías ágiles para equipos orientados a resultados." },
+  ].map((m) => (
+    <div key={m.name} className="flex gap-4 items-start">
+      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[var(--skillea-soft-pink)] to-[var(--skillea-light-blue)] text-[var(--skillea-navy)] font-semibold">
+        {m.name.charAt(0)}
+      </div>
+      <div>
+        <p className="font-semibold text-[var(--skillea-navy)]">{m.name}</p>
+        <p className="text-sm text-[var(--skillea-navy)]/70">{m.role}</p>
+        <p className="mt-1 text-sm text-[var(--skillea-navy)]/60 leading-relaxed">{m.focus}</p>
+      </div>
+    </div>
+  ))}
+</div>
+
               </div>
             </div>
           </div>
