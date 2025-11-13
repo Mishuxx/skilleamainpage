@@ -103,6 +103,27 @@ const testimonials = [
   { name: "Ana P.", role: "UX Designer", text: "Conseguí estructura, feedback y seguridad para mis entrevistas." },
 ];
 
+const aboutTeam = [
+  {
+    name: "Daniela Medina",
+    role: "Coach de Transformación",
+    focus: "Acompaña procesos de cambio cultural y liderazgo femenino.",
+    image: `${BASE}team/daniela-medina.svg`,
+  },
+  {
+    name: "Ricardo Pulgar",
+    role: "Consultor en Innovación",
+    focus: "Integra metodologías ágiles para equipos orientados a resultados.",
+    image: `${BASE}team/ricardo-pulgar.svg`,
+  },
+  {
+    name: "Gustavo Mujica",
+    role: "Mentor de Carrera",
+    focus: "Especialista en planes de transición hacia roles directivos.",
+    image: `${BASE}team/gustavo-mujica.svg`,
+  },
+];
+
 function App() {
   useEffect(() => {
     // Compat: si llega con #hash lo traducimos a ruta limpia
@@ -265,25 +286,28 @@ function App() {
                     cada proceso con cercanía y métricas claras.
                   </p>
                 </div>
-               {/* Nuestro equipo */}
-<div className="grid gap-4">
-  {[
-    { name: "Daniela Medina", role: "Coach de Transformación", focus: "Acompaña procesos de cambio cultural y liderazgo femenino." },
-    { name: "Gustavo Mujica", role: "Mentor de Carrera", focus: "Especialista en planes de transición hacia roles directivos." },
-    { name: "Ricardo Pulgar", role: "Consultor en Innovación", focus: "Integra metodologías ágiles para equipos orientados a resultados." },
-  ].map((m) => (
-    <div key={m.name} className="flex gap-4 items-start">
-      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[var(--skillea-soft-pink)] to-[var(--skillea-light-blue)] text-[var(--skillea-navy)] font-semibold">
-        {m.name.charAt(0)}
-      </div>
-      <div>
-        <p className="font-semibold text-[var(--skillea-navy)]">{m.name}</p>
-        <p className="text-sm text-[var(--skillea-navy)]/70">{m.role}</p>
-        <p className="mt-1 text-sm text-[var(--skillea-navy)]/60 leading-relaxed">{m.focus}</p>
-      </div>
-    </div>
-  ))}
-</div>
+                <div className="grid gap-4">
+                  {aboutTeam.map((member) => (
+                    <div
+                      key={member.name}
+                      className="flex items-start gap-4 rounded-2xl border border-[var(--skillea-soft-blue)]/40 bg-[var(--skillea-cloud)]/60 p-4"
+                    >
+                      <div className="flex h-20 w-16 items-center justify-center">
+                        <img
+                          src={member.image}
+                          alt={member.name}
+                          className="h-20 w-16 object-contain drop-shadow-[0_12px_18px_rgba(16,45,107,0.25)]"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-[var(--skillea-navy)]">{member.name}</p>
+                        <p className="text-sm text-[var(--skillea-navy)]/70">{member.role}</p>
+                        <p className="mt-1 text-sm text-[var(--skillea-navy)]/60 leading-relaxed">{member.focus}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
 
               </div>
             </div>
