@@ -121,6 +121,7 @@ type TeamMember = {
   image?: string;
   imageFit?: "cover" | "contain";
   imageBackground?: string;
+  imageWrapperClass?: string;
 };
 
 const teamMembers: TeamMember[] = [
@@ -172,6 +173,7 @@ const teamMembers: TeamMember[] = [
     image: RicardoPixel,
     imageFit: "contain",
     imageBackground: "bg-[#0b3a6b]",
+    imageWrapperClass: "p-2",
   },
 ];
 
@@ -346,15 +348,19 @@ function App() {
                     </span>
                     <div className="flex items-center gap-4">
                       <div
-                        className={`flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl shadow-inner ${
-                          member.image ? `${member.imageBackground} p-1` : member.avatarGradient
+                        className={`flex shrink-0 items-center justify-center rounded-2xl shadow-inner ${
+                          member.image
+                            ? `h-20 w-20 ${member.imageBackground ?? "bg-white"} ${
+                                member.imageWrapperClass ?? "p-2"
+                              }`
+                            : `h-16 w-16 ${member.avatarGradient}`
                         }`}
                       >
                         {member.image ? (
                           <img
                             src={member.image}
                             alt={member.name}
-                            className={`h-14 w-14 rounded-xl ${
+                            className={`h-full w-full rounded-xl ${
                               member.imageFit === "contain" ? "object-contain" : "object-cover"
                             }`}
                           />
