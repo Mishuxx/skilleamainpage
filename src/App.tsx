@@ -8,7 +8,6 @@ import {
   GraduationCap,
   Compass,
 } from "lucide-react";
-import RicardoPixel from "./assets/team/ricardo-pixel.svg";
 
 /* ==================== Utilidades SPA (URLs limpias) ==================== */
 const BASE = import.meta.env.BASE_URL || "/"; // p.ej. '/skilleamainpage/'
@@ -170,10 +169,8 @@ const teamMembers: TeamMember[] = [
       badge: "bg-[#0b3a6b]/20 text-[#0b3a6b]",
       chip: "bg-[#0b3a6b]/15 text-[#0b3a6b]",
     },
-    image: RicardoPixel,
-    imageFit: "contain",
-    imageBackground: "bg-[#0b3a6b]",
-    imageWrapperClass: "p-2",
+    monogram: "RP",
+    avatarGradient: "bg-gradient-to-br from-[#0b3a6b] via-[var(--skillea-navy)] to-[var(--skillea-light-blue)]",
   },
 ];
 
