@@ -7,6 +7,7 @@ import {
   Briefcase,
   GraduationCap,
   Compass,
+  Linkedin,
 } from "lucide-react";
 
 /* ==================== Utilidades SPA (URLs limpias) ==================== */
@@ -103,6 +104,25 @@ const testimonials = [
   { name: "Ana P.", role: "UX Designer", text: "Conseguí estructura, feedback y seguridad para mis entrevistas." },
 ];
 
+const teamMembers = [
+  {
+    name: "Daniela Medina",
+    role: "Coach de Transformación",
+    focus: "Acompaña procesos de cambio cultural y liderazgo femenino.",
+  },
+  {
+    name: "Gustavo Mujica",
+    role: "Mentor de Carrera",
+    focus: "Especialista en planes de transición hacia roles directivos.",
+  },
+  {
+    name: "Ricardo Pulgar",
+    role: "Consultor en Innovación",
+    focus: "Integra metodologías ágiles para equipos orientados a resultados.",
+    linkedinUrl: "https://www.linkedin.com/in/rickpm/",
+  },
+];
+
 function App() {
   useEffect(() => {
     // Compat: si llega con #hash lo traducimos a ruta limpia
@@ -127,7 +147,7 @@ function App() {
           <div className="flex h-16 items-center justify-between">
             <LinkToSection section="" className="inline-flex items-center gap-3">
               <img src={logoSrc} alt="Skillea" className="h-8 w-auto" />
-              <span className="font-semibold hidden sm:inline">Skillea Coaching</span>
+              <span className="font-semibold hidden sm:inline">Skillea</span>
             </LinkToSection>
             <div className="hidden md:flex items-center gap-8">
               <LinkToSection section="nosotros" className="text-[var(--skillea-navy)]/70 hover:text-[var(--skillea-navy)] transition-colors">Nosotros</LinkToSection>
@@ -265,25 +285,47 @@ function App() {
                     cada proceso con cercanía y métricas claras.
                   </p>
                 </div>
-               {/* Nuestro equipo */}
-<div className="grid gap-4">
-  {[
-    { name: "Daniela Medina", role: "Coach de Transformación", focus: "Acompaña procesos de cambio cultural y liderazgo femenino." },
-    { name: "Gustavo Mujica", role: "Mentor de Carrera", focus: "Especialista en planes de transición hacia roles directivos." },
-    { name: "Ricardo Pulgar", role: "Consultor en Innovación", focus: "Integra metodologías ágiles para equipos orientados a resultados." },
-  ].map((m) => (
-    <div key={m.name} className="flex gap-4 items-start">
-      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[var(--skillea-soft-pink)] to-[var(--skillea-light-blue)] text-[var(--skillea-navy)] font-semibold">
-        {m.name.charAt(0)}
-      </div>
-      <div>
-        <p className="font-semibold text-[var(--skillea-navy)]">{m.name}</p>
-        <p className="text-sm text-[var(--skillea-navy)]/70">{m.role}</p>
-        <p className="mt-1 text-sm text-[var(--skillea-navy)]/60 leading-relaxed">{m.focus}</p>
-      </div>
-    </div>
-  ))}
-</div>
+                  {/* Nuestro equipo */}
+                  <div className="grid gap-4">
+                    {teamMembers.map((member) => {
+                      const hasLinkedin = Boolean(member.linkedinUrl);
+                      const WrapperTag = (hasLinkedin ? "a" : "span") as const;
+                      return (
+                        <div key={member.name} className="flex gap-4 items-start">
+                          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[var(--skillea-soft-pink)] to-[var(--skillea-light-blue)] text-[var(--skillea-navy)] font-semibold">
+                            {member.name.charAt(0)}
+                          </div>
+                          <div className="flex-1">
+                            <p className="font-semibold text-[var(--skillea-navy)]">{member.name}</p>
+                            <p className="text-sm text-[var(--skillea-navy)]/70">{member.role}</p>
+                            <p className="mt-1 text-sm text-[var(--skillea-navy)]/60 leading-relaxed">{member.focus}</p>
+                            <div className="mt-3">
+                              <WrapperTag
+                                {...(hasLinkedin
+                                  ? {
+                                      href: member.linkedinUrl,
+                                      target: "_blank",
+                                      rel: "noopener noreferrer",
+                                      className:
+                                        "inline-flex h-9 w-9 items-center justify-center rounded-full border border-[var(--skillea-soft-blue)]/60 text-[var(--skillea-navy)]/70 hover:text-[var(--skillea-navy)] hover:border-[var(--skillea-navy)] transition-colors",
+                                    }
+                                  : {
+                                      className:
+                                        "inline-flex h-9 w-9 items-center justify-center rounded-full border border-[var(--skillea-ice)] text-[var(--skillea-navy)]/30 cursor-not-allowed",
+                                      title: "Perfil de LinkedIn próximamente",
+                                    })}
+                              >
+                                <Linkedin className="w-4 h-4" aria-hidden="true" />
+                                {hasLinkedin && (
+                                  <span className="sr-only">LinkedIn de {member.name}</span>
+                                )}
+                              </WrapperTag>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
 
               </div>
             </div>
