@@ -157,7 +157,8 @@ const teamMembers: TeamMember[] = [
     name: "Ricardo Pulgar",
     role: "Consultor en Innovación",
     focus: "Integra metodologías ágiles para equipos orientados a resultados.",
-    photo: teamPortrait,
+    // 👇 Aquí usamos tu imagen real en /public
+    photo: "Rickpixel.png",
     accent: "from-[var(--skillea-light-blue)] to-[var(--skillea-soft-blue)]",
     linkedinUrl: "https://www.linkedin.com/in/rickpm/",
   },
@@ -227,7 +228,7 @@ function App() {
                       <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                     </span>
                   </LinkToSection>
-                  <LinkToSection section="servicios" className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-white/60 text-white/90 hover:bg-white/10 transition-colors font-semibold">
+                  <LinkToSection section="servicios" className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-white/60 text-white/90 hover:bg:white/10 transition-colors font-semibold">
                     Conocer más
                   </LinkToSection>
                 </div>
@@ -235,9 +236,9 @@ function App() {
                 <div className="mt-12 grid sm:grid-cols-3 gap-6">
                   <div className="bg-white/10 border border-white/20 rounded-2xl p-5">
                     <div className="text-3xl font-bold text-[var(--skillea-star-yellow)]">500+</div>
-                    <p className="text-sm text-white/80">Profesionales formados</p>
+                    <p className="text-sm text.white/80">Profesionales formados</p>
                   </div>
-                  <div className="bg-white/10 border border-white/20 rounded-2xl p-5">
+                  <div className="bg-white/10 border border.white/20 rounded-2xl p-5">
                     <div className="text-3xl font-bold text-[var(--skillea-star-yellow)]">95%</div>
                     <p className="text-sm text-white/80">Tasa de satisfacción</p>
                   </div>
@@ -325,56 +326,56 @@ function App() {
                     cada proceso con cercanía y métricas claras.
                   </p>
                 </div>
-                  {/* Nuestro equipo */}
-                  <div className="grid gap-4">
-                    {teamMembers.map((member) => {
-                      const hasLinkedin = Boolean(member.linkedinUrl);
-                      const WrapperTag = (hasLinkedin ? "a" : "span") as const;
-                      const photoSrc = `${BASE}${member.photo}`;
-                      return (
+                {/* Nuestro equipo */}
+                <div className="grid gap-4">
+                  {teamMembers.map((member) => {
+                    const hasLinkedin = Boolean(member.linkedinUrl);
+                    const WrapperTag = (hasLinkedin ? "a" : "span") as const;
+                    const photoSrc = `${BASE}${member.photo}`;
+                    return (
+                      <div
+                        key={member.name}
+                        className="flex gap-4 items-center rounded-2xl border border-[var(--skillea-ice)] bg-[var(--skillea-cloud)]/60 p-4"
+                      >
                         <div
-                          key={member.name}
-                          className="flex gap-4 items-center rounded-2xl border border-[var(--skillea-ice)] bg-[var(--skillea-cloud)]/60 p-4"
+                          className={`relative h-20 w-20 rounded-[28px] bg-gradient-to-br ${member.accent} p-1.5 shadow-[0_15px_30px_-20px_rgba(16,45,107,0.7)]`}
+                          aria-hidden="true"
                         >
-                          <div
-                            className={`relative h-20 w-20 rounded-[28px] bg-gradient-to-br ${member.accent} p-1.5 shadow-[0_15px_30px_-20px_rgba(16,45,107,0.7)]`}
-                            aria-hidden="true"
-                          >
-                            <div className="h-full w-full rounded-[22px] bg-white flex items-center justify-center overflow-hidden">
-                              <img src={photoSrc} alt={member.name} className="h-full w-full object-contain p-2" />
-                            </div>
-                          </div>
-                          <div className="flex-1">
-                            <p className="font-semibold text-[var(--skillea-navy)]">{member.name}</p>
-                            <p className="text-sm text-[var(--skillea-navy)]/70">{member.role}</p>
-                            <p className="mt-1 text-sm text-[var(--skillea-navy)]/60 leading-relaxed">{member.focus}</p>
-                            <div className="mt-3">
-                              <WrapperTag
-                                {...(hasLinkedin
-                                  ? {
-                                      href: member.linkedinUrl,
-                                      target: "_blank",
-                                      rel: "noopener noreferrer",
-                                      className:
-                                        "inline-flex h-9 w-9 items-center justify-center rounded-full border border-[var(--skillea-soft-blue)]/60 text-[var(--skillea-navy)]/70 hover:text-[var(--skillea-navy)] hover:border-[var(--skillea-navy)] transition-colors",
-                                    }
-                                  : {
-                                      className:
-                                        "inline-flex h-9 w-9 items-center justify-center rounded-full border border-[var(--skillea-ice)] text-[var(--skillea-navy)]/30 cursor-not-allowed",
-                                      title: "Perfil de LinkedIn próximamente",
-                                    })}
-                              >
-                                <Linkedin className="w-4 h-4" aria-hidden="true" />
-                                {hasLinkedin && (
-                                  <span className="sr-only">LinkedIn de {member.name}</span>
-                                )}
-                              </WrapperTag>
-                            </div>
+                          <div className="h-full w-full rounded-[22px] bg-white flex items-center justify-center overflow-hidden">
+                            <img src={photoSrc} alt={member.name} className="h-full w-full object-contain p-2" />
                           </div>
                         </div>
-                      );
-                    })}
-                  </div>
+                        <div className="flex-1">
+                          <p className="font-semibold text-[var(--skillea-navy)]">{member.name}</p>
+                          <p className="text-sm text-[var(--skillea-navy)]/70">{member.role}</p>
+                          <p className="mt-1 text-sm text-[var(--skillea-navy)]/60 leading-relaxed">{member.focus}</p>
+                          <div className="mt-3">
+                            <WrapperTag
+                              {...(hasLinkedin
+                                ? {
+                                    href: member.linkedinUrl,
+                                    target: "_blank",
+                                    rel: "noopener noreferrer",
+                                    className:
+                                      "inline-flex h-9 w-9 items-center justify-center rounded-full border border-[var(--skillea-soft-blue)]/60 text-[var(--skillea-navy)]/70 hover:text-[var(--skillea-navy)] hover:border-[var(--skillea-navy)] transition-colors",
+                                  }
+                                : {
+                                    className:
+                                      "inline-flex h-9 w-9 items-center justify-center rounded-full border border-[var(--skillea-ice)] text-[var(--skillea-navy)]/30 cursor-not-allowed",
+                                    title: "Perfil de LinkedIn próximamente",
+                                  })}
+                            >
+                              <Linkedin className="w-4 h-4" aria-hidden="true" />
+                              {hasLinkedin && (
+                                <span className="sr-only">LinkedIn de {member.name}</span>
+                              )}
+                            </WrapperTag>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
 
               </div>
             </div>
@@ -394,7 +395,7 @@ function App() {
           </div>
           <div className="grid gap-8 md:grid-cols-3">
             {services.map((service) => (
-              <div key={service.title} className="group relative overflow-hidden rounded-3xl bg-white p-10 shadow-[0_35px_60px_-40px_rgba(16,45,107,0.35)] border border-[var(--skillea-soft-blue)]/40">
+              <div key={service.title} className="group relative overflow-hidden rounded-3xl bg.white p-10 shadow-[0_35px_60px_-40px_rgba(16,45,107,0.35)] border border-[var(--skillea-soft-blue)]/40">
                 <div className="absolute -top-20 -right-20 h-40 w-40 rounded-full bg-[var(--skillea-soft-blue)]/30 blur-3xl transition-transform duration-500 group-hover:scale-125" />
                 <div className={`relative mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl ${service.accentWrapper}`}>
                   <service.icon className="w-7 h-7" />
@@ -409,7 +410,7 @@ function App() {
                     </li>
                   ))}
                 </ul>
-                <div className="relative rounded-2xl bg-[var(--skillea-cloud)]/70 px-4 py-3 text-sm text-[var(--skillea-navy)]/80 opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+                <div className="relative rounded-2xl bg-[var(--skillea-cloud)]/70 px-4 py-3 text-sm text-[var(--skillea-navy)]/80 opacity-0 translate-y-2 transition-all.duration-300 group-hover:opacity-100 group-hover:translate-y-0">
                   {service.hoverDetails}
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[var(--skillea-soft-pink)]/40 to-transparent" />
@@ -423,7 +424,7 @@ function App() {
       <section id="metodologia" className="py-24 px-6" style={{ backgroundColor: "var(--skillea-cloud)" }}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="inline-flex items-center gap-2 rounded-full bg-[var(--skillea-ice)] px-4 py-2 text-sm font-semibold text-[var(--skillea-navy)]">
+            <span className="inline-flex items-center gap-2 rounded-full bg-[var(--skillea-ice)] px-4 py-2.text-sm font-semibold text-[var(--skillea-navy)]">
               <span className="inline-block h-2 w-2 rounded-full bg-[var(--skillea-star-yellow)]" /> Metodología
             </span>
             <h2 className="mt-6 text-4xl md:text-5xl font-bold">Un proceso diseñado para ver resultados</h2>
@@ -446,7 +447,7 @@ function App() {
       <section id="testimonios" className="py-24 px-6 bg-[var(--skillea-ice)]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-[var(--skillea-navy)]">
+            <span className="inline-flex items-center gap-2 rounded-full bg-white px-4.py-2 text-sm font-semibold text-[var(--skillea-navy)]">
               <span className="inline-block h-2 w-2 rounded-full bg-[var(--skillea-soft-pink)]" /> Testimonios
             </span>
             <h2 className="mt-6 text-4xl md:text-5xl font-bold">Historias de evolución profesional</h2>
@@ -460,9 +461,9 @@ function App() {
                     <Star key={i} className="w-5 h-5 fill-[var(--skillea-star-yellow)] text-[var(--skillea-star-yellow)]" />
                   ))}
                 </div>
-                <p className="text-base leading-relaxed text-[var(--skillea-navy)]/80 mb-6 italic">“{t.text}”</p>
+                <p className="text-base.leading-relaxed text-[var(--skillea-navy)]/80 mb-6 italic">“{t.text}”</p>
                 <div className="flex items-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[var(--skillea-soft-pink)] to-[var(--skillea-light-blue)] text-[var(--skillea-navy)] font-semibold">
+                  <div className="flex h-12 w-12 items-center.justify-center rounded-full bg-gradient-to-br from-[var(--skillea-soft-pink)] to-[var(--skillea-light-blue)] text-[var(--skillea-navy)] font-semibold">
                     {t.name.charAt(0)}
                   </div>
                   <div>
@@ -483,13 +484,13 @@ function App() {
           style={{ backgroundImage: "var(--skillea-cta-gradient)", backgroundColor: "var(--skillea-soft-pink)" }}
         >
           <div className="px-10 py-16 md:px-20 md:py-20 text-center">
-            <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-6">¿Listo para transformar tu carrera?</h2>
+            <h2 className="text-4xl md:text-5xl font-bold.leading-tight mb-6">¿Listo para transformar tu carrera?</h2>
             <p className="text-lg md:text-xl text-[var(--skillea-navy)]/80 max-w-3xl mx-auto mb-10">
               Agenda una sesión gratuita y descubre cómo podemos ayudarte a construir el futuro profesional que imaginas.
             </p>
             <LinkToSection
               section="cta"
-              className="inline-flex items-center gap-3 rounded-full bg-white px-8 py-4 text-lg font-semibold text-[var(--skillea-navy)] shadow-lg hover:shadow-xl transition-transform hover:-translate-y-0.5"
+              className="inline-flex items-center.gap-3 rounded-full bg-white px-8 py-4 text-lg font-semibold text-[var(--skillea-navy)] shadow-lg hover:shadow-xl transition-transform hover:-translate-y-0.5"
             >
               Comenzar ahora
               <ArrowRight className="w-6 h-6" />
@@ -513,23 +514,23 @@ function App() {
               <ul className="space-y-2 text-sm text-[var(--skillea-ice)]/80">
                 <li><LinkToSection section="servicios" className="hover:text-white transition-colors">Coaching Profesional</LinkToSection></li>
                 <li><LinkToSection section="servicios" className="hover:text-white transition-colors">Desarrollo de Habilidades</LinkToSection></li>
-                <li><LinkToSection section="servicios" className="hover:text-white transition-colors">Orientación Vocacional</LinkToSection></li>
+                <li><LinkToSection section="servicios" className="hover:text-white.transition-colors">Orientación Vocacional</LinkToSection></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold text-lg mb-4">Empresa</h4>
+              <h4 className="font-semibold text-lg.mb-4">Empresa</h4>
               <ul className="space-y-2 text-sm text-[var(--skillea-ice)]/80">
                 <li><LinkToSection section="nosotros" className="hover:text-white transition-colors">Nosotros</LinkToSection></li>
-                <li><LinkToSection section="testimonios" className="hover:text-white transition-colors">Equipo</LinkToSection></li>
-                <li><a href="#" className="hover:text-white transition-colors">Blog</a></li>
+                <li><LinkToSection section="testimonios" className="hover:text-white.transition-colors">Equipo</LinkToSection></li>
+                <li><a href="#" className="hover:text-white.transition-colors">Blog</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold text-lg mb-4">Contacto</h4>
+              <h4 className="font-semibold text-lg.mb-4">Contacto</h4>
               <ul className="space-y-2 text-sm text-[var(--skillea-ice)]/80">
-                <li><a href="mailto:hello@skillea.com" className="hover:text-white transition-colors">Contáctanos</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">FAQ</a></li>
-                <li><a href="mailto:soporte@skillea.com" className="hover:text-white transition-colors">Soporte</a></li>
+                <li><a href="mailto:hello@skillea.com" className="hover:text-white.transition-colors">Contáctanos</a></li>
+                <li><a href="#" className="hover:text-white.transition-colors">FAQ</a></li>
+                <li><a href="mailto:soporte@skillea.com" className="hover:text-white.transition-colors">Soporte</a></li>
               </ul>
             </div>
           </div>
