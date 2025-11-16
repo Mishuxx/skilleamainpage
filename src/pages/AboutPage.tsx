@@ -1,20 +1,25 @@
 import { ArrowRight, HeartHandshake, Sparkles, Target } from 'lucide-react';
 
+const assetBase = import.meta.env.BASE_URL ?? '/';
+
 const teamMembers = [
   {
     name: 'Daniela Medina',
     role: 'Co-Fundadora & Coach Ejecutiva',
-    bio: 'Especialista en liderazgo consciente y desarrollo de equipos de alto rendimiento con más de 12 años de experiencia en transformación organizacional.'
-  },
-  {
-    name: 'Gustavo Mujica',
-    role: 'Director de Estrategia de Carrera',
-    bio: 'Diseña rutas de aprendizaje y planes de carrera que conectan talento latinoamericano con oportunidades globales en tecnología y negocios.'
+    bio: 'Especialista en liderazgo consciente y desarrollo de equipos de alto rendimiento con más de 12 años de experiencia en transformación organizacional.',
+    image: `${assetBase}team/daniela-medina.svg`
   },
   {
     name: 'Ricardo Pulgar',
     role: 'Mentor de Innovación y Talento',
-    bio: 'Facilitador de metodologías ágiles, mentor de emprendedores y apasionado por crear culturas que impulsan la experimentación continua.'
+    bio: 'Facilitador de metodologías ágiles, mentor de emprendedores y apasionado por crear culturas que impulsan la experimentación continua.',
+    image: `${assetBase}team/ricardo-pulgar.svg`
+  },
+  {
+    name: 'Gustavo Mujica',
+    role: 'Director de Estrategia de Carrera',
+    bio: 'Diseña rutas de aprendizaje y planes de carrera que conectan talento latinoamericano con oportunidades globales en tecnología y negocios.',
+    image: `${assetBase}team/gustavo-mujica.svg`
   }
 ];
 
@@ -105,6 +110,14 @@ function AboutPage({ onNavigateToSection }: AboutPageProps) {
               key={member.name}
               className="relative h-full rounded-3xl bg-white p-8 text-left shadow-[0_35px_60px_-40px_rgba(16,45,107,0.35)] border border-[var(--skillea-soft-blue)]/40"
             >
+              <div className="mb-6 flex justify-center">
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className="h-48 w-32 object-contain drop-shadow-[0_20px_30px_rgba(16,45,107,0.25)]"
+                  loading="lazy"
+                />
+              </div>
               <div className="mb-6 inline-flex items-center justify-center rounded-2xl bg-gradient-to-br from-[var(--skillea-soft-pink)] via-[var(--skillea-light-blue)] to-[var(--skillea-star-yellow)] px-4 py-3 text-sm font-semibold text-[var(--skillea-navy)]">
                 {member.role}
               </div>
