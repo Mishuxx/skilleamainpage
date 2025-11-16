@@ -59,6 +59,8 @@ type Service = {
   icon: React.ComponentType<{ className?: string }>;
   accentWrapper: string;
   bulletAccent: string;
+  bullets: string[];
+  hoverDetails: string;
 };
 
 const services: Service[] = [
@@ -70,6 +72,13 @@ const services: Service[] = [
     accentWrapper:
       "bg-[var(--skillea-ice)] text-[var(--skillea-navy)] border border-[var(--skillea-soft-blue)]",
     bulletAccent: "text-[var(--skillea-soft-pink)]",
+    bullets: [
+      "Diagnóstico profundo de tu situación actual",
+      "Sesiones estratégicas semanales",
+      "Planes de acción medibles",
+    ],
+    hoverDetails:
+      "Mapeamos tus objetivos, definimos indicadores de impacto y te acompañamos con ejercicios y seguimiento para mantener el ritmo.",
   },
   {
     title: "Desarrollo de Habilidades",
@@ -79,6 +88,13 @@ const services: Service[] = [
     accentWrapper:
       "bg-[var(--skillea-soft-peach)]/30 text-[var(--skillea-navy)]",
     bulletAccent: "text-[var(--skillea-star-yellow)]",
+    bullets: [
+      "Entrenamientos experienciales",
+      "Prácticas guiadas con feedback",
+      "Evaluaciones de progreso",
+    ],
+    hoverDetails:
+      "Activamos habilidades técnicas y blandas con retos semanales, rúbricas y retroalimentación puntual para consolidar hábitos.",
   },
   {
     title: "Orientación Vocacional",
@@ -88,6 +104,13 @@ const services: Service[] = [
     accentWrapper:
       "bg-[var(--skillea-soft-blue)]/30 text-[var(--skillea-navy)]",
     bulletAccent: "text-[var(--skillea-light-blue)]",
+    bullets: [
+      "Exploración de intereses y fortalezas",
+      "Sesiones de diseño de carrera",
+      "Plan de transición con hitos",
+    ],
+    hoverDetails:
+      "Integramos assessments, entrevistas y prototipos de carrera para que tomes decisiones con claridad y pasos concretos.",
   },
 ];
 
@@ -353,17 +376,16 @@ function App() {
                 <h3 className="relative text-2xl font-bold mb-4">{service.title}</h3>
                 <p className="relative text-[var(--skillea-navy)]/70 leading-relaxed mb-6">{service.description}</p>
                 <ul className="relative space-y-3 mb-6">
-                  {["Plan de desarrollo personalizado", "Sesiones semanales 1-on-1", "Seguimiento de metas"].map((bullet, i) => (
-                    <li key={i} className="flex items-center gap-3 text-sm text-[var(--skillea-navy)]/80">
+                  {service.bullets.map((bullet) => (
+                    <li key={bullet} className="flex items-center gap-3 text-sm text-[var(--skillea-navy)]/80">
                       <CheckCircle className={`w-5 h-5 ${service.bulletAccent}`} />
                       <span>{bullet}</span>
                     </li>
                   ))}
                 </ul>
-                <LinkToSection section="cta" className="relative inline-flex items-center gap-2 text-sm font-semibold text-[var(--skillea-navy)] transition-transform group-hover:translate-x-1">
-                  Saber más
-                  <ArrowRight className="w-4 h-4" />
-                </LinkToSection>
+                <div className="relative rounded-2xl bg-[var(--skillea-cloud)]/70 px-4 py-3 text-sm text-[var(--skillea-navy)]/80 opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+                  {service.hoverDetails}
+                </div>
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[var(--skillea-soft-pink)]/40 to-transparent" />
               </div>
             ))}
