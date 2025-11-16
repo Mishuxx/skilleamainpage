@@ -136,26 +136,28 @@ type TeamMember = {
   linkedinUrl?: string;
 };
 
+const teamPortrait = "team/pixel-coach.svg";
+
 const teamMembers: TeamMember[] = [
   {
     name: "Daniela Medina",
     role: "Coach de Transformación",
     focus: "Acompaña procesos de cambio cultural y liderazgo femenino.",
-    photo: "team/daniela-medina.svg",
+    photo: teamPortrait,
     accent: "from-[var(--skillea-soft-pink)] to-[var(--skillea-light-blue)]",
   },
   {
     name: "Gustavo Mujica",
     role: "Mentor de Carrera",
     focus: "Especialista en planes de transición hacia roles directivos.",
-    photo: "team/gustavo-mujica.svg",
+    photo: teamPortrait,
     accent: "from-[var(--skillea-star-yellow)] to-[var(--skillea-soft-peach)]",
   },
   {
     name: "Ricardo Pulgar",
     role: "Consultor en Innovación",
     focus: "Integra metodologías ágiles para equipos orientados a resultados.",
-    photo: "team/ricardo-pulgar.svg",
+    photo: teamPortrait,
     accent: "from-[var(--skillea-light-blue)] to-[var(--skillea-soft-blue)]",
     linkedinUrl: "https://www.linkedin.com/in/rickpm/",
   },
