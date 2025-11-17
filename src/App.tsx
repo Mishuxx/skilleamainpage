@@ -143,21 +143,23 @@ const teamMembers: TeamMember[] = [
     name: "Daniela Medina",
     role: "Coach de Transformación",
     focus: "Acompaña procesos de cambio cultural y liderazgo femenino.",
-    photo: teamPortrait,
+    // 👇 Nueva imagen en /public
+    photo: "Danipixel.png",
     accent: "from-[var(--skillea-soft-pink)] to-[var(--skillea-light-blue)]",
   },
   {
     name: "Gustavo Mujica",
     role: "Mentor de Carrera",
     focus: "Especialista en planes de transición hacia roles directivos.",
-    photo: teamPortrait,
+    // 👇 Nueva imagen en /public
+    photo: "Guspixel.png",
     accent: "from-[var(--skillea-star-yellow)] to-[var(--skillea-soft-peach)]",
   },
   {
     name: "Ricardo Pulgar",
     role: "Consultor en Innovación",
     focus: "Integra metodologías ágiles para equipos orientados a resultados.",
-    // 👇 Aquí usamos tu imagen real en /public
+    // 👇 Tu imagen en /public
     photo: "Rickpixel.png",
     accent: "from-[var(--skillea-light-blue)] to-[var(--skillea-soft-blue)]",
     linkedinUrl: "https://www.linkedin.com/in/rickpm/",
@@ -228,7 +230,7 @@ function App() {
                       <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                     </span>
                   </LinkToSection>
-                  <LinkToSection section="servicios" className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-white/60 text-white/90 hover:bg:white/10 transition-colors font-semibold">
+                  <LinkToSection section="servicios" className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-white/60 text-white/90 hover:bg-white/10 transition-colors font-semibold">
                     Conocer más
                   </LinkToSection>
                 </div>
@@ -236,9 +238,9 @@ function App() {
                 <div className="mt-12 grid sm:grid-cols-3 gap-6">
                   <div className="bg-white/10 border border-white/20 rounded-2xl p-5">
                     <div className="text-3xl font-bold text-[var(--skillea-star-yellow)]">500+</div>
-                    <p className="text-sm text.white/80">Profesionales formados</p>
+                    <p className="text-sm text-white/80">Profesionales formados</p>
                   </div>
-                  <div className="bg-white/10 border border.white/20 rounded-2xl p-5">
+                  <div className="bg-white/10 border border-white/20 rounded-2xl p-5">
                     <div className="text-3xl font-bold text-[var(--skillea-star-yellow)]">95%</div>
                     <p className="text-sm text-white/80">Tasa de satisfacción</p>
                   </div>
