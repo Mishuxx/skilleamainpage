@@ -59,6 +59,8 @@ type Service = {
   icon: React.ComponentType<{ className?: string }>;
   accentWrapper: string;
   bulletAccent: string;
+  bullets: string[];
+  hoverDetails: string;
 };
 
 const services: Service[] = [
@@ -70,6 +72,13 @@ const services: Service[] = [
     accentWrapper:
       "bg-[var(--skillea-ice)] text-[var(--skillea-navy)] border border-[var(--skillea-soft-blue)]",
     bulletAccent: "text-[var(--skillea-soft-pink)]",
+    bullets: [
+      "Diagnóstico profundo de tu situación actual",
+      "Sesiones estratégicas semanales",
+      "Planes de acción medibles",
+    ],
+    hoverDetails:
+      "Mapeamos tus objetivos, definimos indicadores de impacto y te acompañamos con ejercicios y seguimiento para mantener el ritmo.",
   },
   {
     title: "Desarrollo de Habilidades",
@@ -79,6 +88,13 @@ const services: Service[] = [
     accentWrapper:
       "bg-[var(--skillea-soft-peach)]/30 text-[var(--skillea-navy)]",
     bulletAccent: "text-[var(--skillea-star-yellow)]",
+    bullets: [
+      "Entrenamientos experienciales",
+      "Prácticas guiadas con feedback",
+      "Evaluaciones de progreso",
+    ],
+    hoverDetails:
+      "Activamos habilidades técnicas y blandas con retos semanales, rúbricas y retroalimentación puntual para consolidar hábitos.",
   },
   {
     title: "Orientación Vocacional",
@@ -88,6 +104,13 @@ const services: Service[] = [
     accentWrapper:
       "bg-[var(--skillea-soft-blue)]/30 text-[var(--skillea-navy)]",
     bulletAccent: "text-[var(--skillea-light-blue)]",
+    bullets: [
+      "Exploración de intereses y fortalezas",
+      "Sesiones de diseño de carrera",
+      "Plan de transición con hitos",
+    ],
+    hoverDetails:
+      "Integramos assessments, entrevistas y prototipos de carrera para que tomes decisiones con claridad y pasos concretos.",
   },
 ];
 
@@ -104,21 +127,38 @@ const testimonials = [
   { name: "Ana P.", role: "UX Designer", text: "Conseguí estructura, feedback y seguridad para mis entrevistas." },
 ];
 
-const teamMembers = [
+type TeamMember = {
+  name: string;
+  role: string;
+  focus: string;
+  photo: string;
+  accent: string;
+  linkedinUrl?: string;
+};
+
+const teamPortrait = "team/pixel-coach.svg";
+
+const teamMembers: TeamMember[] = [
   {
     name: "Daniela Medina",
     role: "Coach de Transformación",
     focus: "Acompaña procesos de cambio cultural y liderazgo femenino.",
+    photo: teamPortrait,
+    accent: "from-[var(--skillea-soft-pink)] to-[var(--skillea-light-blue)]",
   },
   {
     name: "Gustavo Mujica",
     role: "Mentor de Carrera",
     focus: "Especialista en planes de transición hacia roles directivos.",
+    photo: teamPortrait,
+    accent: "from-[var(--skillea-star-yellow)] to-[var(--skillea-soft-peach)]",
   },
   {
     name: "Ricardo Pulgar",
     role: "Consultor en Innovación",
     focus: "Integra metodologías ágiles para equipos orientados a resultados.",
+    photo: teamPortrait,
+    accent: "from-[var(--skillea-light-blue)] to-[var(--skillea-soft-blue)]",
     linkedinUrl: "https://www.linkedin.com/in/rickpm/",
   },
 ];
@@ -290,10 +330,19 @@ function App() {
                     {teamMembers.map((member) => {
                       const hasLinkedin = Boolean(member.linkedinUrl);
                       const WrapperTag = (hasLinkedin ? "a" : "span") as const;
+                      const photoSrc = `${BASE}${member.photo}`;
                       return (
-                        <div key={member.name} className="flex gap-4 items-start">
-                          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[var(--skillea-soft-pink)] to-[var(--skillea-light-blue)] text-[var(--skillea-navy)] font-semibold">
-                            {member.name.charAt(0)}
+                        <div
+                          key={member.name}
+                          className="flex gap-4 items-center rounded-2xl border border-[var(--skillea-ice)] bg-[var(--skillea-cloud)]/60 p-4"
+                        >
+                          <div
+                            className={`relative h-20 w-20 rounded-[28px] bg-gradient-to-br ${member.accent} p-1.5 shadow-[0_15px_30px_-20px_rgba(16,45,107,0.7)]`}
+                            aria-hidden="true"
+                          >
+                            <div className="h-full w-full rounded-[22px] bg-white flex items-center justify-center overflow-hidden">
+                              <img src={photoSrc} alt={member.name} className="h-full w-full object-contain p-2" />
+                            </div>
                           </div>
                           <div className="flex-1">
                             <p className="font-semibold text-[var(--skillea-navy)]">{member.name}</p>
@@ -353,17 +402,16 @@ function App() {
                 <h3 className="relative text-2xl font-bold mb-4">{service.title}</h3>
                 <p className="relative text-[var(--skillea-navy)]/70 leading-relaxed mb-6">{service.description}</p>
                 <ul className="relative space-y-3 mb-6">
-                  {["Plan de desarrollo personalizado", "Sesiones semanales 1-on-1", "Seguimiento de metas"].map((bullet, i) => (
-                    <li key={i} className="flex items-center gap-3 text-sm text-[var(--skillea-navy)]/80">
+                  {service.bullets.map((bullet) => (
+                    <li key={bullet} className="flex items-center gap-3 text-sm text-[var(--skillea-navy)]/80">
                       <CheckCircle className={`w-5 h-5 ${service.bulletAccent}`} />
                       <span>{bullet}</span>
                     </li>
                   ))}
                 </ul>
-                <LinkToSection section="cta" className="relative inline-flex items-center gap-2 text-sm font-semibold text-[var(--skillea-navy)] transition-transform group-hover:translate-x-1">
-                  Saber más
-                  <ArrowRight className="w-4 h-4" />
-                </LinkToSection>
+                <div className="relative rounded-2xl bg-[var(--skillea-cloud)]/70 px-4 py-3 text-sm text-[var(--skillea-navy)]/80 opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+                  {service.hoverDetails}
+                </div>
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[var(--skillea-soft-pink)]/40 to-transparent" />
               </div>
             ))}
@@ -472,8 +520,7 @@ function App() {
               <h4 className="font-semibold text-lg mb-4">Empresa</h4>
               <ul className="space-y-2 text-sm text-[var(--skillea-ice)]/80">
                 <li><LinkToSection section="nosotros" className="hover:text-white transition-colors">Nosotros</LinkToSection></li>
-                <li><LinkToSection section="testimonios" className="hover:text-white transition-colors">Equipo</LinkToSection></li>
-                <li><a href="#" className="hover:text-white transition-colors">Blog</a></li>
+                <li><LinkToSection section="servicios" className="hover:text-white transition-colors">Servicios</LinkToSection></li>
               </ul>
             </div>
             <div>
