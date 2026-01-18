@@ -75,14 +75,13 @@ type Service = {
   hoverDetails: string;
 };
 
-const services: Service[] = [
+/* ================== Datos ================== */
+const services = [
   {
     title: "Coaching Profesional",
-    description:
-      "Acompañamiento 1:1 con enfoque en claridad, estrategia y resultados medibles.",
+    description: "Acompañamiento 1:1 con enfoque en claridad, estrategia y resultados medibles.",
     icon: Briefcase,
-    accentWrapper:
-      "bg-[var(--skillea-ice)] text-[var(--skillea-navy)] border border-[var(--skillea-soft-blue)]",
+    accentWrapper: "bg-[var(--skillea-ice)] text-[var(--skillea-navy)] border border-[var(--skillea-soft-blue)]",
     bulletAccent: "text-[var(--skillea-soft-pink)]",
     bullets: [
       "Diagnóstico profundo de tu situación actual",
@@ -94,11 +93,9 @@ const services: Service[] = [
   },
   {
     title: "Desarrollo de Habilidades",
-    description:
-      "Plan de crecimiento con prácticas guiadas y seguimiento de metas.",
+    description: "Plan de crecimiento con prácticas guiadas y seguimiento de metas.",
     icon: GraduationCap,
-    accentWrapper:
-      "bg-[var(--skillea-soft-peach)]/30 text-[var(--skillea-navy)]",
+    accentWrapper: "bg-[var(--skillea-soft-peach)]/30 text-[var(--skillea-navy)]",
     bulletAccent: "text-[var(--skillea-star-yellow)]",
     bullets: [
       "Entrenamientos experienciales",
@@ -110,11 +107,9 @@ const services: Service[] = [
   },
   {
     title: "Orientación Vocacional",
-    description:
-      "Descubre tu dirección profesional con evaluación y diseño de carrera.",
+    description: "Descubre tu dirección profesional con evaluación y diseño de carrera.",
     icon: Compass,
-    accentWrapper:
-      "bg-[var(--skillea-soft-blue)]/30 text-[var(--skillea-navy)]",
+    accentWrapper: "bg-[var(--skillea-soft-blue)]/30 text-[var(--skillea-navy)]",
     bulletAccent: "text-[var(--skillea-light-blue)]",
     bullets: [
       "Exploración de intereses y fortalezas",
