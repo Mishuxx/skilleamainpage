@@ -7,6 +7,8 @@ import {
   GraduationCap,
   Compass,
   Linkedin,
+  Users,
+  Sparkles,
 } from "lucide-react";
 
 /* ==================== Utilidades SPA (URLs limpias) ==================== */
@@ -25,25 +27,34 @@ function navigateTo(section: SectionId) {
   if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-function syncFromPathname() {
+function parsePathname(): RouteState {
   const raw = window.location.pathname;
   let rest = raw.startsWith(BASE) ? raw.slice(BASE.length) : raw.replace(/^\/+/, "");
   rest = rest.replace(/^\/+|\/+$/g, "");
-  const section = (rest as SectionId) || "";
-  if (SECTION_IDS.includes(section)) navigateTo(section);
+  if (PAGE_IDS.includes(rest as PageId)) {
+    return { page: rest as PageId, section: null };
+  }
+  if (HOME_SECTION_IDS.includes(rest as HomeSectionId)) {
+    return { page: "", section: rest as HomeSectionId };
+  }
+  return { page: "", section: null };
 }
 
-const LinkToSection: React.FC<
-  React.PropsWithChildren<{ section: SectionId; className?: string }>
-> = ({ section, className, children }) => {
-  const href = section ? `${BASE}${section}` : BASE;
+const LinkToRoute: React.FC<
+  React.PropsWithChildren<{
+    route: RouteId;
+    className?: string;
+    onNavigate: (route: RouteId) => void;
+  }>
+> = ({ route, className, onNavigate, children }) => {
+  const href = route ? `${BASE}${route}` : BASE;
   return (
     <a
       href={href}
       className={className}
       onClick={(e) => {
         e.preventDefault();
-        navigateTo(section);
+        onNavigate(route);
       }}
     >
       {children}
@@ -120,11 +131,14 @@ const methodologySteps = [
   { step: 4, title: "Seguimiento", description: "Métricas de progreso y ajustes estratégicos para sostener resultados." },
 ];
 
-const testimonials = [
-  { name: "María G.", role: "Product Manager", text: "Logré claridad para mi cambio de carrera y en 8 semanas cerré una oferta." },
-  { name: "Luis R.", role: "Data Analyst", text: "El plan y la mentoría me ayudaron a enfocarme y crecer con resultados." },
-  { name: "Ana P.", role: "UX Designer", text: "Conseguí estructura, feedback y seguridad para mis entrevistas." },
-];
+type TeamMember = {
+  name: string;
+  role: string;
+  focus: string;
+  photo: string;
+  accent: string;
+  linkedinUrl?: string;
+};
 
 type TeamMember = {
   name: string;
@@ -161,18 +175,72 @@ const teamMembers: TeamMember[] = [
   },
 ];
 
+const academyTracks = [
+  {
+    title: "Bootcamps de habilidades",
+    description:
+      "Programas intensivos para consolidar competencias digitales, liderazgo y comunicación efectiva.",
+  },
+  {
+    title: "Rutas de certificación",
+    description:
+      "Trayectorias guiadas con proyectos prácticos y evaluaciones para validar tu progreso.",
+  },
+  {
+    title: "Workshops para equipos",
+    description:
+      "Sesiones personalizadas para potenciar el desempeño colectivo y la cultura de aprendizaje continuo.",
+  },
+];
+
 function App() {
+  const academyUrl = "https://academia.skillea.com";
+  const [activePage, setActivePage] = useState<PageId>("");
+  const pendingScroll = useRef<HomeSectionId | null>(null);
+
+  const handleNavigate = useCallback((route: RouteId) => {
+    const path = route ? `${BASE}${route}` : BASE;
+    if (window.location.pathname !== path) window.history.pushState({}, "", path);
+
+    if (PAGE_IDS.includes(route as PageId)) {
+      setActivePage(route as PageId);
+      pendingScroll.current = null;
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    pendingScroll.current = route as HomeSectionId;
+    setActivePage("");
+  }, []);
+
   useEffect(() => {
     if (window.location.hash) {
       const h = window.location.hash.replace("#", "");
-      if (SECTION_IDS.includes(h as SectionId)) navigateTo(h as SectionId);
+      if (HOME_SECTION_IDS.includes(h as HomeSectionId)) {
+        setActivePage("");
+        pendingScroll.current = h as HomeSectionId;
+      } else if (PAGE_IDS.includes(h as PageId)) {
+        setActivePage(h as PageId);
+        pendingScroll.current = null;
+      }
     } else {
-      syncFromPathname();
+      sync();
     }
-    const onPop = () => syncFromPathname();
+
+    const onPop = () => sync();
     window.addEventListener("popstate", onPop);
     return () => window.removeEventListener("popstate", onPop);
   }, []);
+
+  useEffect(() => {
+    if (!pendingScroll.current) return;
+    const section = pendingScroll.current;
+    pendingScroll.current = null;
+    requestAnimationFrame(() => {
+      const el = document.getElementById(section);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }, [activePage]);
 
   const logoSrc = `${BASE}WhatsApp_Image_2025-10-30_at_13.44.54_546e4640-removebg-preview.png`;
 
@@ -296,7 +364,7 @@ function App() {
                       <p className="text-base font-semibold">Evaluaciones, sesiones 1:1 y acompañamiento continuo.</p>
                     </div>
                   </div>
-                </div>
+                ))}
               </div>
 
             </div>
@@ -405,8 +473,8 @@ function App() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
 
 
@@ -458,10 +526,10 @@ function App() {
 
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[var(--skillea-soft-pink)]/40 to-transparent" />
               </div>
-            ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
 
 
