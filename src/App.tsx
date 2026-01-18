@@ -4,9 +4,6 @@ import {
   ArrowRight,
   Star,
   CheckCircle,
-  Briefcase,
-  GraduationCap,
-  Compass,
   Linkedin,
   Users,
   Sparkles,
@@ -16,7 +13,7 @@ import {
 const BASE = import.meta.env.BASE_URL || "/"; // p.ej. '/skilleamainpage/'
 const NORMALIZED_BASE = BASE.endsWith("/") ? BASE : `${BASE}/`;
 const PAGE_IDS = ["", "nosotros", "staffing"] as const;
-const HOME_SECTION_IDS = ["servicios", "metodologia", "academia", "cta"] as const;
+const HOME_SECTION_IDS = ["metodologia", "academia", "cta"] as const;
 
 type PageId = (typeof PAGE_IDS)[number];
 type HomeSectionId = (typeof HOME_SECTION_IDS)[number];
@@ -64,62 +61,6 @@ const LinkToRoute: React.FC<
   );
 };
 /* ================== Fin utilidades SPA (URLs limpias) ================== */
-
-type Service = {
-  title: string;
-  description: string;
-  icon: React.ComponentType<{ className?: string }>;
-  accentWrapper: string;
-  bulletAccent: string;
-  bullets: string[];
-  hoverDetails: string;
-};
-
-/* ================== Datos ================== */
-const services = [
-  {
-    title: "Coaching Profesional",
-    description: "Acompañamiento 1:1 con enfoque en claridad, estrategia y resultados medibles.",
-    icon: Briefcase,
-    accentWrapper: "bg-[var(--skillea-ice)] text-[var(--skillea-navy)] border border-[var(--skillea-soft-blue)]",
-    bulletAccent: "text-[var(--skillea-soft-pink)]",
-    bullets: [
-      "Diagnóstico profundo de tu situación actual",
-      "Sesiones estratégicas semanales",
-      "Planes de acción medibles",
-    ],
-    hoverDetails:
-      "Mapeamos tus objetivos, definimos indicadores de impacto y te acompañamos con ejercicios y seguimiento para mantener el ritmo.",
-  },
-  {
-    title: "Desarrollo de Habilidades",
-    description: "Plan de crecimiento con prácticas guiadas y seguimiento de metas.",
-    icon: GraduationCap,
-    accentWrapper: "bg-[var(--skillea-soft-peach)]/30 text-[var(--skillea-navy)]",
-    bulletAccent: "text-[var(--skillea-star-yellow)]",
-    bullets: [
-      "Entrenamientos experienciales",
-      "Prácticas guiadas con feedback",
-      "Evaluaciones de progreso",
-    ],
-    hoverDetails:
-      "Activamos habilidades técnicas y blandas con retos semanales, rúbricas y retroalimentación puntual para consolidar hábitos.",
-  },
-  {
-    title: "Orientación Vocacional",
-    description: "Descubre tu dirección profesional con evaluación y diseño de carrera.",
-    icon: Compass,
-    accentWrapper: "bg-[var(--skillea-soft-blue)]/30 text-[var(--skillea-navy)]",
-    bulletAccent: "text-[var(--skillea-light-blue)]",
-    bullets: [
-      "Exploración de intereses y fortalezas",
-      "Sesiones de diseño de carrera",
-      "Plan de transición con hitos",
-    ],
-    hoverDetails:
-      "Integramos assessments, entrevistas y prototipos de carrera para que tomes decisiones con claridad y pasos concretos.",
-  },
-];
 
 const methodologySteps = [
   { step: 1, title: "Diagnóstico", description: "Definimos objetivos y líneas base para medir progreso desde el inicio." },
@@ -235,7 +176,11 @@ function App() {
     });
   }, [activePage]);
 
-  const logoSrc = `${NORMALIZED_BASE}WhatsApp_Image_2025-10-30_at_13.44.54_546e4640-removebg-preview.png`;
+  const assetUrl = useCallback(
+    (path: string) => new URL(path, import.meta.env.BASE_URL).toString(),
+    []
+  );
+  const logoSrc = assetUrl("WhatsApp_Image_2025-10-30_at_13.44.54_546e4640-removebg-preview.png");
 
   return (
     <div className="min-h-screen bg-[var(--skillea-cloud)] text-[var(--skillea-navy)]">
@@ -249,7 +194,6 @@ function App() {
             </LinkToRoute>
             <div className="hidden md:flex items-center gap-8">
               <LinkToRoute route="nosotros" onNavigate={handleNavigate} className="text-[var(--skillea-navy)]/70 hover:text-[var(--skillea-navy)] transition-colors">Nosotros</LinkToRoute>
-              <LinkToRoute route="servicios" onNavigate={handleNavigate} className="text-[var(--skillea-navy)]/70 hover:text-[var(--skillea-navy)] transition-colors">Servicios</LinkToRoute>
               <LinkToRoute route="metodologia" onNavigate={handleNavigate} className="text-[var(--skillea-navy)]/70 hover:text-[var(--skillea-navy)] transition-colors">Metodología</LinkToRoute>
               <LinkToRoute route="staffing" onNavigate={handleNavigate} className="text-[var(--skillea-navy)]/70 hover:text-[var(--skillea-navy)] transition-colors">Staffing</LinkToRoute>
               <LinkToRoute route="academia" onNavigate={handleNavigate} className="text-[var(--skillea-navy)]/70 hover:text-[var(--skillea-navy)] transition-colors">Academia</LinkToRoute>
@@ -299,7 +243,7 @@ function App() {
                     {teamMembers.map((member) => {
                       const hasLinkedin = Boolean(member.linkedinUrl);
                       const WrapperTag = (hasLinkedin ? "a" : "span") as const;
-                      const photoSrc = `${NORMALIZED_BASE}${member.photo}`;
+                      const photoSrc = assetUrl(member.photo);
                       return (
                         <div
                           key={member.name}
@@ -442,7 +386,7 @@ function App() {
                           <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                         </span>
                       </LinkToRoute>
-                      <LinkToRoute route="servicios" onNavigate={handleNavigate} className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-white/60 text-white/90 hover:bg-white/10 transition-colors font-semibold">
+                      <LinkToRoute route="metodologia" onNavigate={handleNavigate} className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-white/60 text-white/90 hover:bg-white/10 transition-colors font-semibold">
                         Conocer más
                       </LinkToRoute>
                     </div>
@@ -500,43 +444,6 @@ function App() {
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </section>
-
-          {/* SERVICIOS */}
-          <section id="servicios" className="py-24 px-6">
-            <div className="max-w-7xl mx-auto">
-              <div className="text-center max-w-3xl mx-auto mb-16">
-                <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-[var(--skillea-navy)]">
-                  <span className="inline-block h-2 w-2 rounded-full bg-[var(--skillea-soft-pink)]" /> Servicios
-                </span>
-                <h2 className="mt-6 text-4xl md:text-5xl font-bold text-[var(--skillea-navy)]">Soluciones para cada etapa de tu carrera</h2>
-                <p className="mt-4 text-lg text-[var(--skillea-navy)]/70">Diseñamos experiencias que equilibran la estrategia, el desarrollo de habilidades y la claridad vocacional.</p>
-              </div>
-              <div className="grid gap-8 md:grid-cols-3">
-                {services.map((service) => (
-                  <div key={service.title} className="group relative overflow-hidden rounded-3xl bg-white p-10 shadow-[0_35px_60px_-40px_rgba(16,45,107,0.35)] border border-[var(--skillea-soft-blue)]/40">
-                    <div className="absolute -top-20 -right-20 h-40 w-40 rounded-full bg-[var(--skillea-soft-blue)]/30 blur-3xl transition-transform duration-500 group-hover:scale-125" />
-                    <div className={`relative mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl ${service.accentWrapper}`}>
-                      <service.icon className="w-7 h-7" />
-                    </div>
-                    <h3 className="relative text-2xl font-bold mb-4">{service.title}</h3>
-                    <p className="relative text-[var(--skillea-navy)]/70 leading-relaxed mb-6">{service.description}</p>
-                    <ul className="relative space-y-3 mb-6">
-                      {service.bullets.map((bullet) => (
-                        <li key={bullet} className="flex items-center gap-3 text-sm text-[var(--skillea-navy)]/80">
-                          <CheckCircle className={`w-5 h-5 ${service.bulletAccent}`} />
-                          <span>{bullet}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <div className="relative rounded-2xl bg-[var(--skillea-cloud)]/70 px-4 py-3 text-sm text-[var(--skillea-navy)]/80 opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
-                      {service.hoverDetails}
-                    </div>
-                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[var(--skillea-soft-pink)]/40 to-transparent" />
-                  </div>
-                ))}
               </div>
             </div>
           </section>
@@ -633,20 +540,12 @@ function App() {
       {/* FOOTER */}
       <footer className="bg-[var(--skillea-mid-blue)] text-[var(--skillea-ice)] py-16 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="grid gap-12 md:grid-cols-4 mb-12">
+          <div className="grid gap-12 md:grid-cols-3 mb-12">
             <div>
               <img src={logoSrc} alt="Skillea" className="h-10 w-auto mb-4" />
               <p className="text-sm text-[var(--skillea-ice)]/80 leading-relaxed">
                 Transformando carreras a través del coaching profesional, el desarrollo continuo y la claridad vocacional.
               </p>
-            </div>
-            <div>
-              <h4 className="font-semibold text-lg mb-4">Servicios</h4>
-              <ul className="space-y-2 text-sm text-[var(--skillea-ice)]/80">
-                <li><LinkToRoute route="servicios" onNavigate={handleNavigate} className="hover:text-white transition-colors">Coaching Profesional</LinkToRoute></li>
-                <li><LinkToRoute route="servicios" onNavigate={handleNavigate} className="hover:text-white transition-colors">Desarrollo de Habilidades</LinkToRoute></li>
-                <li><LinkToRoute route="servicios" onNavigate={handleNavigate} className="hover:text-white transition-colors">Orientación Vocacional</LinkToRoute></li>
-              </ul>
             </div>
             <div>
               <h4 className="font-semibold text-lg mb-4">Empresa</h4>
