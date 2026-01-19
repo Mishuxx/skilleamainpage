@@ -176,10 +176,10 @@ function App() {
     });
   }, [activePage]);
 
-  const assetUrl = useCallback(
-    (path: string) => new URL(path, import.meta.env.BASE_URL).toString(),
-    []
-  );
+  const assetUrl = useCallback((path: string) => {
+    const baseUrl = new URL(import.meta.env.BASE_URL || "/", window.location.origin);
+    return new URL(path, baseUrl).toString();
+  }, []);
   const logoSrc = assetUrl("WhatsApp_Image_2025-10-30_at_13.44.54_546e4640-removebg-preview.png");
 
   return (
