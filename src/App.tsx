@@ -81,23 +81,23 @@ type TeamMember = {
 const teamMembers: TeamMember[] = [
   {
     name: "Daniela Medina",
-    role: "Coach de Transformación",
-    focus: "Acompaña procesos de cambio cultural y liderazgo femenino.",
-    photo: "Danipixel.png",
+    role: "Consultora",
+    focus: "Psicóloga conductual y especialista en adquisición de talento.",
+    photo: "https://skillea-media-prod.s3.us-east-2.amazonaws.com/Danipixel.png",
     accent: "from-[var(--skillea-soft-pink)] to-[var(--skillea-light-blue)]",
   },
   {
     name: "Gustavo Mujica",
-    role: "Mentor de Carrera",
-    focus: "Especialista en planes de transición hacia roles directivos.",
-    photo: "Guspixel.png",
+    role: "Consultor",
+    focus: "Abogado y estratega de talento para el ecosistema FinTech y Blockchain.",
+    photo: "https://skillea-media-prod.s3.us-east-2.amazonaws.com/Guspixel.png",
     accent: "from-[var(--skillea-star-yellow)] to-[var(--skillea-soft-peach)]",
   },
   {
     name: "Ricardo Pulgar",
-    role: "Consultor en Innovación",
-    focus: "Integra metodologías ágiles para equipos orientados a resultados.",
-    photo: "Rickpixel.png",
+    role: "Consultor",
+    focus: "Psicólogo dinámico, especialista en RR. HH. y en adquisición de talento IT.",
+    photo: "https://skillea-media-prod.s3.us-east-2.amazonaws.com/Rickpixel.png",
     accent: "from-[var(--skillea-light-blue)] to-[var(--skillea-soft-blue)]",
     linkedinUrl: "https://www.linkedin.com/in/rickpm/",
   },
@@ -176,10 +176,10 @@ function App() {
     });
   }, [activePage]);
 
-  const assetUrl = useCallback((path: string) => {
-    const baseUrl = new URL(import.meta.env.BASE_URL || "/", window.location.origin);
-    return new URL(path, baseUrl).toString();
-  }, []);
+  const assetUrl = useCallback(
+    (path: string) => `${NORMALIZED_BASE}${path.replace(/^\/+/, "")}`,
+    []
+  );
   const logoSrc = assetUrl("WhatsApp_Image_2025-10-30_at_13.44.54_546e4640-removebg-preview.png");
 
   return (
@@ -210,7 +210,7 @@ function App() {
               <span className="inline-flex items-center gap-2 rounded-full bg-[var(--skillea-soft-peach)]/60 px-4 py-2 text-sm font-semibold text-[var(--skillea-navy)]">
                 <span className="inline-block h-2 w-2 rounded-full bg-[var(--skillea-star-yellow)]" /> Nosotros
               </span>
-              <h1 className="mt-6 text-4xl md:text-5xl font-bold text-[var(--skillea-navy)]">Acompañamos a profesionales y equipos hacia su próxima etapa</h1>
+              <h1 className="mt-6 text-4xl md:text-5xl font-bold text-[var(--skillea-navy)]">La identidad profesional no se encuentra, se construye.</h1>
               <p className="mt-6 text-lg text-[var(--skillea-navy)]/70 leading-relaxed">
                 Somos un colectivo de coaches, consultores y especialistas en talento que combina metodologías ágiles,
                 psicología organizacional y data para impulsar decisiones profesionales con confianza. Diseñamos programas
@@ -218,8 +218,16 @@ function App() {
               </p>
               <div className="mt-10 grid gap-6 sm:grid-cols-2">
                 {[
-                  { title: "Misión", description: "Empoderar a cada profesional para diseñar un camino laboral sostenible, alineado con sus talentos y valores." },
-                  { title: "Visión", description: "Ser la referencia en América Latina en coaching profesional basado en evidencia y acompañamiento humano." },
+                  {
+                    title: "Misión",
+                    description:
+                      "Acompañar a cada persona en el diseño de una trayectoria laboral sostenible, auténtica y alineada con sus talentos, valores y aspiraciones, brindando herramientas concretas para tomar decisiones con claridad en un entorno cambiante.",
+                  },
+                  {
+                    title: "Visión",
+                    description:
+                      "Ser referentes en América Latina en el desarrollo vocacional basado en evidencia, tecnología y acompañamiento humano, contribuyendo a una transformación profesional profunda y consciente.",
+                  },
                 ].map((item) => (
                   <div key={item.title} className="rounded-3xl border border-[var(--skillea-soft-blue)]/40 bg-[var(--skillea-cloud)] p-6">
                     <h2 className="text-xl font-semibold text-[var(--skillea-navy)] mb-2">{item.title}</h2>
