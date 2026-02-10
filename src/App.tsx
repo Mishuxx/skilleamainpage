@@ -383,9 +383,9 @@ function App() {
                       <span className="inline-block h-2.5 w-2.5 rounded-full bg-[var(--skillea-star-yellow)]" />
                       Coaching Profesional &amp; Desarrollo Vocacional
                     </div>
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">Alcanza tu máximo potencial profesional</h1>
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">Transforma tu perfil para el futuro</h1>
                     <p className="text-lg md:text-xl text-white/80 mb-8 leading-relaxed max-w-xl">
-                      Impulsamos carreras a través de procesos personalizados, acompañamiento experto y una comunidad vibrante lista para apoyarte.
+                      Tu Copiloto de Carrera y Propósito Vocacional.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4">
                       <LinkToRoute route="cta" onNavigate={handleNavigate} className="group relative inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-[var(--skillea-navy)] font-semibold shadow-xl">
@@ -399,6 +399,7 @@ function App() {
                         Conocer más
                       </LinkToRoute>
                     </div>
+                    <p className="mt-4 text-sm text-white/70">¿Hablamos de tu potencial? Reserva tu espacio gratis</p>
 
                     <div className="mt-12 grid sm:grid-cols-3 gap-6">
                       <div className="bg-white/10 border border-white/20 rounded-2xl p-5">
@@ -433,6 +434,7 @@ function App() {
                             { title: "Orientación Personalizada", description: "Sesiones diseñadas para tus metas únicas." },
                             { title: "Resultados Medibles", description: "Seguimiento continuo de tu progreso." },
                             { title: "Comunidad de Apoyo", description: "Red de profesionales que impulsan tu crecimiento." },
+                            { title: "Realidad y Tendencias del Mercado", description: "Panorama actualizado para anticipar oportunidades y desafíos." },
                           ].map((item, index) => (
                             <div key={index} className="flex items-start gap-4">
                               <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[var(--skillea-ice)] text-[var(--skillea-navy)]">
