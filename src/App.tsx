@@ -103,6 +103,7 @@ const teamMembers: TeamMember[] = [
   },
 ];
 
+// Content blocks below are copy-managed to keep landing updates simple for non-dev edits.
 const academyTracks = [
   {
     title: "Bootcamps de habilidades",
