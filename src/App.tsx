@@ -63,10 +63,10 @@ const LinkToRoute: React.FC<
 /* ================== Fin utilidades SPA (URLs limpias) ================== */
 
 const methodologySteps = [
-  { step: 1, title: "Diagnóstico", description: "Definimos objetivos y líneas base para medir progreso desde el inicio." },
-  { step: 2, title: "Plan de Acción", description: "Creamos un plan personalizado por etapas: foco, hábitos y entregables." },
-  { step: 3, title: "Ejecución", description: "Sesiones, prácticas y retroalimentación continua para avanzar cada semana." },
-  { step: 4, title: "Seguimiento", description: "Métricas de progreso y ajustes estratégicos para sostener resultados." },
+  { step: 1, title: "Diagnóstico", description: "Queremos conocerte: cuéntanos sobre tu perfil, tus intereses y lo que esperas lograr." },
+  { step: 2, title: "Plan de Acción", description: "Creamos un plan personalizado, con foco en tus objetivos, hábitos y pasos concretos para avanzar." },
+  { step: 3, title: "Ejecución", description: "Ponemos el plan en marcha con contenido dinámico, sesiones prácticas, ejercicios aplicados y retroalimentación continua." },
+  { step: 4, title: "Seguimiento", description: "Medimos tu progreso, ajustamos lo necesario y te damos el apoyo para garantizar tu crecimiento." },
 ];
 
 type TeamMember = {
@@ -100,6 +100,25 @@ const teamMembers: TeamMember[] = [
     photo: "https://skillea-media-prod.s3.us-east-2.amazonaws.com/Rickpixel.png",
     accent: "from-[var(--skillea-light-blue)] to-[var(--skillea-soft-blue)]",
     linkedinUrl: "https://www.linkedin.com/in/rickpm/",
+  },
+];
+
+// Content blocks below are copy-managed to keep landing updates simple for non-dev edits.
+const academyTracks = [
+  {
+    title: "Bootcamps de habilidades",
+    description:
+      "Programas intensivos para consolidar competencias digitales, liderazgo y comunicación efectiva.",
+  },
+  {
+    title: "Rutas de certificación",
+    description:
+      "Trayectorias guiadas con proyectos prácticos y evaluaciones para validar tu progreso.",
+  },
+  {
+    title: "Workshops para equipos",
+    description:
+      "Sesiones personalizadas para potenciar el desempeño colectivo y la cultura de aprendizaje continuo.",
   },
 ];
 
@@ -381,11 +400,11 @@ function App() {
                   <div>
                     <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white/80 px-4 py-2 rounded-full text-sm font-semibold mb-6">
                       <span className="inline-block h-2.5 w-2.5 rounded-full bg-[var(--skillea-star-yellow)]" />
-                      Coaching Profesional &amp; Desarrollo Vocacional
+                      Tu Copiloto de Carrera y Propósito Vocacional
                     </div>
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">Transforma tu perfil para el futuro</h1>
                     <p className="text-lg md:text-xl text-white/80 mb-8 leading-relaxed max-w-xl">
-                      Tu Copiloto de Carrera y Propósito Vocacional.
+                      Impulsamos carreras a través de procesos personalizados, acompañamiento experto y una comunidad vibrante lista para apoyarte.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4">
                       <LinkToRoute route="cta" onNavigate={handleNavigate} className="group relative inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-[var(--skillea-navy)] font-semibold shadow-xl">
