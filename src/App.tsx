@@ -104,26 +104,7 @@ const teamMembers: TeamMember[] = [
 ];
 
 // Content blocks below are copy-managed to keep landing updates simple for non-dev edits.
-const academyTracks = [
-  {
-    title: "Bootcamps de habilidades",
-    description:
-      "Programas intensivos para consolidar competencias digitales, liderazgo y comunicación efectiva.",
-  },
-  {
-    title: "Rutas de certificación",
-    description:
-      "Trayectorias guiadas con proyectos prácticos y evaluaciones para validar tu progreso.",
-  },
-  {
-    title: "Workshops para equipos",
-    description:
-      "Sesiones personalizadas para potenciar el desempeño colectivo y la cultura de aprendizaje continuo.",
-  },
-];
-
-// Content blocks below are copy-managed to keep landing updates simple for non-dev edits.
-const academyTracks = [
+const academyContentTracks = [
   {
     title: "Bootcamps de habilidades",
     description:
@@ -514,7 +495,7 @@ function App() {
                 </p>
               </div>
               <div className="grid gap-8 md:grid-cols-3">
-                {academyTracks.map((track) => (
+                {academyContentTracks.map((track) => (
                   <div key={track.title} className="rounded-3xl border border-[var(--skillea-soft-blue)]/40 bg-[var(--skillea-cloud)] p-8 shadow-sm">
                     <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-[var(--skillea-navy)]">
                       <Sparkles className="h-6 w-6" />
