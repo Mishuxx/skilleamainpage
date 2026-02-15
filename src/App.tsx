@@ -122,6 +122,25 @@ const academyTracks = [
   },
 ];
 
+// Content blocks below are copy-managed to keep landing updates simple for non-dev edits.
+const academyTracks = [
+  {
+    title: "Bootcamps de habilidades",
+    description:
+      "Programas intensivos para consolidar competencias digitales, liderazgo y comunicación efectiva.",
+  },
+  {
+    title: "Rutas de certificación",
+    description:
+      "Trayectorias guiadas con proyectos prácticos y evaluaciones para validar tu progreso.",
+  },
+  {
+    title: "Workshops para equipos",
+    description:
+      "Sesiones personalizadas para potenciar el desempeño colectivo y la cultura de aprendizaje continuo.",
+  },
+];
+
 function App() {
   const academyUrl = "https://academia.skillea.com";
   const [activePage, setActivePage] = useState<PageId>("");
