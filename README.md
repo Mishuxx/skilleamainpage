@@ -42,3 +42,7 @@ The command runs `vite preview` bound to `0.0.0.0:4173`. After starting the serv
 2. Open `http://localhost:4173` (or the network URL that Vite prints) in your browser.
 
 You should now see the latest version of the Skillea landing page, including the "Nosotros" section and updated color palette.
+
+## 🛰️ GitHub Pages deployment
+
+This project is deployed via the GitHub Actions workflow in `.github/workflows/deploy.yml`, which builds the site with Vite and publishes the `dist/` output to GitHub Pages.
