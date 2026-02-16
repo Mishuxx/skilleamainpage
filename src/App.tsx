@@ -106,19 +106,19 @@ const teamMembers: TeamMember[] = [
 // Content blocks below are copy-managed to keep landing updates simple for non-dev edits.
 const academyContentTracks = [
   {
-    title: "Bootcamps de habilidades",
+    title: "Programas de Aprendizaje",
     description:
-      "Programas intensivos para consolidar competencias digitales, liderazgo y comunicación efectiva.",
+      "Experiencias inmersivas diseñadas para potenciar tus facultades interpersonales y sociales, claves para el éxito en cualquier entorno profesional.",
   },
   {
-    title: "Rutas de certificación",
+    title: "Sesiones de Asesoramiento",
     description:
-      "Trayectorias guiadas con proyectos prácticos y evaluaciones para validar tu progreso.",
+      "Tu copiloto estratégico en reuniones 1:1 para resolver desafíos reales y optimizar tu toma de decisiones.",
   },
   {
-    title: "Workshops para equipos",
+    title: "Medidor de Progreso",
     description:
-      "Sesiones personalizadas para potenciar el desempeño colectivo y la cultura de aprendizaje continuo.",
+      "Un perfil dinámico que proyecta tu progreso en tiempo real y funciona como una carta de presentación atractiva ante nuevas oportunidades laborales.",
   },
 ];
 
@@ -489,9 +489,11 @@ function App() {
                 <span className="inline-flex items-center gap-2 rounded-full bg-[var(--skillea-soft-peach)]/60 px-4 py-2 text-sm font-semibold text-[var(--skillea-navy)]">
                   <span className="inline-block h-2 w-2 rounded-full bg-[var(--skillea-star-yellow)]" /> Academia
                 </span>
-                <h2 className="mt-6 text-4xl md:text-5xl font-bold">Aprende con programas diseñados para acelerar tu carrera</h2>
+                <h2 className="mt-6 text-4xl md:text-5xl font-bold">Potencia tu talento con programas diseñados para acelerar tu carrera</h2>
                 <p className="mt-4 text-lg text-[var(--skillea-navy)]/70">
-                  Nuestra academia combina aprendizaje práctico, acompañamiento experto y comunidades activas para potenciar tu crecimiento profesional.
+                  Nuestra academia integra contenido dinámico de vanguardia y mentoría experta para fortalecer tus facultades de liderazgo,
+                  comunicación y gestión. Prepárate para destacar en el mercado actual con una formación que conecta tu esencia
+                  vocacional con resultados profesionales.
                 </p>
               </div>
               <div className="grid gap-8 md:grid-cols-3">
@@ -507,8 +509,7 @@ function App() {
               </div>
               <div className="mt-12 flex flex-col items-center text-center">
                 <p className="text-sm text-[var(--skillea-navy)]/60 max-w-2xl">
-                  La experiencia completa vive en Skillea Academy. Abriremos la plataforma en una nueva pestaña para que puedas explorar cursos,
-                  rutas y contenidos sin perder esta página.
+                  Ponemos el plan en marcha con contenido dinámico, sesiones prácticas, ejercicios aplicados y retroalimentación continua.
                 </p>
                 <a
                   href={academyUrl}
@@ -516,7 +517,7 @@ function App() {
                   rel="noopener noreferrer"
                   className="mt-6 inline-flex items-center gap-2 rounded-full bg-[var(--skillea-navy)] text-white px-7 py-3 font-semibold shadow-md hover:shadow-lg transition-all"
                 >
-                  Abrir Academia en nueva pestaña
+                  Hablemos de tu futuro: Descubre tu camino con una sesión gratuita
                   <ArrowRight className="w-5 h-5" />
                 </a>
               </div>
