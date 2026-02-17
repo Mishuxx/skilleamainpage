@@ -13,7 +13,7 @@ import {
 const BASE = import.meta.env.BASE_URL || "/"; // p.ej. '/skilleamainpage/'
 const NORMALIZED_BASE = BASE.endsWith("/") ? BASE : `${BASE}/`;
 const PAGE_IDS = ["", "nosotros", "staffing"] as const;
-const HOME_SECTION_IDS = ["metodologia", "academia", "cta"] as const;
+const HOME_SECTION_IDS = ["metodologia", "academia"] as const;
 
 type PageId = (typeof PAGE_IDS)[number];
 type HomeSectionId = (typeof HOME_SECTION_IDS)[number];
@@ -198,7 +198,7 @@ function App() {
               <LinkToRoute route="metodologia" onNavigate={handleNavigate} className="text-[var(--skillea-navy)]/70 hover:text-[var(--skillea-navy)] transition-colors">Metodología</LinkToRoute>
               <LinkToRoute route="staffing" onNavigate={handleNavigate} className="text-[var(--skillea-navy)]/70 hover:text-[var(--skillea-navy)] transition-colors">Staffing</LinkToRoute>
               <LinkToRoute route="academia" onNavigate={handleNavigate} className="text-[var(--skillea-navy)]/70 hover:text-[var(--skillea-navy)] transition-colors">Academia</LinkToRoute>
-              <LinkToRoute route="cta" onNavigate={handleNavigate} className="bg-gradient-to-r from-[var(--skillea-soft-pink)] to-[var(--skillea-star-yellow)] text-[var(--skillea-navy)] px-6 py-2.5 rounded-full font-semibold shadow-sm hover:shadow-md transition-all">Comenzar</LinkToRoute>
+              <LinkToRoute route="academia" onNavigate={handleNavigate} className="bg-gradient-to-r from-[var(--skillea-soft-pink)] to-[var(--skillea-star-yellow)] text-[var(--skillea-navy)] px-6 py-2.5 rounded-full font-semibold shadow-sm hover:shadow-md transition-all">Comenzar</LinkToRoute>
             </div>
           </div>
         </div>
@@ -353,7 +353,7 @@ function App() {
                   </p>
                 </div>
                 <LinkToRoute
-                  route="cta"
+                  route="academia"
                   onNavigate={handleNavigate}
                   className="inline-flex items-center gap-2 rounded-full bg-[var(--skillea-navy)] text-white px-6 py-3 font-semibold shadow-md"
                 >
@@ -388,13 +388,13 @@ function App() {
                       Impulsamos carreras a través de procesos personalizados, acompañamiento experto y una comunidad vibrante lista para apoyarte.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4">
-                      <LinkToRoute route="cta" onNavigate={handleNavigate} className="group relative inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-[var(--skillea-navy)] font-semibold shadow-xl">
+                      <a href={academyUrl} target="_blank" rel="noopener noreferrer" className="group relative inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-[var(--skillea-navy)] font-semibold shadow-xl">
                         <span className="absolute inset-0 rounded-full bg-gradient-to-r from-[var(--skillea-star-yellow)] via-[var(--skillea-soft-peach)] to-[var(--skillea-soft-pink)] opacity-90 group-hover:opacity-100 group-hover:scale-[1.02] transition-all" />
                         <span className="relative flex items-center gap-2">
-                          Agenda tu sesión gratuita
+                          Crea tu cuenta gratuita en Academia
                           <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                         </span>
-                      </LinkToRoute>
+                      </a>
                       <LinkToRoute route="metodologia" onNavigate={handleNavigate} className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-white/60 text-white/90 hover:bg-white/10 transition-colors font-semibold">
                         Conocer más
                       </LinkToRoute>
@@ -517,35 +517,13 @@ function App() {
                   rel="noopener noreferrer"
                   className="mt-6 inline-flex items-center gap-2 rounded-full bg-[var(--skillea-navy)] text-white px-7 py-3 font-semibold shadow-md hover:shadow-lg transition-all"
                 >
-                  Hablemos de tu futuro: Descubre tu camino con una sesión gratuita
+                  Ir a Academia y crear cuenta gratuita
                   <ArrowRight className="w-5 h-5" />
                 </a>
               </div>
             </div>
           </section>
 
-          {/* CTA */}
-          <section id="cta" className="py-24 px-6">
-            <div
-              className="max-w-5xl mx-auto overflow-hidden rounded-[32px] text-[var(--skillea-navy)] shadow-[0_45px_80px_-50px_rgba(16,45,107,0.5)]"
-              style={{ backgroundImage: "var(--skillea-cta-gradient)", backgroundColor: "var(--skillea-soft-pink)" }}
-            >
-              <div className="px-10 py-16 md:px-20 md:py-20 text-center">
-                <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-6">¿Listo para transformar tu carrera?</h2>
-                <p className="text-lg md:text-xl text-[var(--skillea-navy)]/80 max-w-3xl mx-auto mb-10">
-                  Agenda una sesión gratuita y descubre cómo podemos ayudarte a construir el futuro profesional que imaginas.
-                </p>
-                <LinkToRoute
-                  route="cta"
-                  onNavigate={handleNavigate}
-                  className="inline-flex items-center gap-3 rounded-full bg-white px-8 py-4 text-lg font-semibold text-[var(--skillea-navy)] shadow-lg hover:shadow-xl transition-transform hover:-translate-y-0.5"
-                >
-                  Comenzar ahora
-                  <ArrowRight className="w-6 h-6" />
-                </LinkToRoute>
-              </div>
-            </div>
-          </section>
         </>
       )}
 
