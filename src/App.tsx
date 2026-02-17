@@ -195,9 +195,7 @@ function App() {
             </LinkToRoute>
             <div className="hidden md:flex items-center gap-8">
               <LinkToRoute route="nosotros" onNavigate={handleNavigate} className="text-[var(--skillea-navy)]/70 hover:text-[var(--skillea-navy)] transition-colors">Nosotros</LinkToRoute>
-              <LinkToRoute route="metodologia" onNavigate={handleNavigate} className="text-[var(--skillea-navy)]/70 hover:text-[var(--skillea-navy)] transition-colors">Metodología</LinkToRoute>
               <LinkToRoute route="staffing" onNavigate={handleNavigate} className="text-[var(--skillea-navy)]/70 hover:text-[var(--skillea-navy)] transition-colors">Staffing</LinkToRoute>
-              <LinkToRoute route="academia" onNavigate={handleNavigate} className="text-[var(--skillea-navy)]/70 hover:text-[var(--skillea-navy)] transition-colors">Academia</LinkToRoute>
               <LinkToRoute route="academia" onNavigate={handleNavigate} className="bg-gradient-to-r from-[var(--skillea-soft-pink)] to-[var(--skillea-star-yellow)] text-[var(--skillea-navy)] px-6 py-2.5 rounded-full font-semibold shadow-sm hover:shadow-md transition-all">Comenzar</LinkToRoute>
             </div>
           </div>
